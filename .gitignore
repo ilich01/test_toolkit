@@ -30,6 +30,13 @@ build/
 .apollo/
 __generated__/
 
+# Cypress test outputs
+cypress/videos/
+cypress/screenshots/
+
+# Tailwind CSS
+tailwind.config.js
+.postcssrc.js
 
 # Coverage directory used by tools like istanbul
 coverage/
