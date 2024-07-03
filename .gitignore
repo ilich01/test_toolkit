@@ -43,7 +43,6 @@ coverage/
 *.lcov
 
 # Miscellaneous
-.env
 .env.local
 .env.development.local
 .env.test.local
