@@ -26,19 +26,16 @@ export const fetchRepositories = createAsyncThunk<
   { repositories: Repository[]; pageInfo: any },
   { searchTerm: string; page: number; after?: string | null },
   { state: RootState }
->(
-  'repositories/fetchRepositories', // имя действия
-  async ({ searchTerm, page, after }, { rejectWithValue }) => {
-    try {
-      console.log(`Вызов fetchRepositoriesAPI с searchTerm: ${searchTerm}, page: ${page}`)
-      const { repositories, pageInfo } = await fetchRepositoriesAPI(searchTerm, page, after)
-      return { repositories, pageInfo }
-    } catch (error: any) {
-      console.error('Ошибка fetchRepositories:', error)
-      return rejectWithValue(error.message)
-    }
+>('repositories/fetchRepositories', async ({ searchTerm, page, after }, { rejectWithValue }) => {
+  try {
+    console.log(`Вызов fetchRepositoriesAPI с searchTerm: ${searchTerm}, page: ${page}`)
+    const { repositories, pageInfo } = await fetchRepositoriesAPI(searchTerm, page, after)
+    return { repositories, pageInfo }
+  } catch (error: any) {
+    console.error('Ошибка fetchRepositories:', error)
+    return rejectWithValue(error.message)
   }
-)
+})
 
 export const fetchRepositoryDetails = createAsyncThunk<RepositoryDetails, { owner: string; name: string }, { state: RootState }>(
   'repositories/fetchRepositoryDetails',
